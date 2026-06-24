@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código do Protagonista — O Sistema Completo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #050505;
+            color: #e5e7eb;
+        }
+        h1, h2, h3, .cinematic-title {
+            font-family: 'Cinzel', serif;
+        }
+        .glow-amber {
+            text-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+        }
+        .border-glow {
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.1);
+        }
+        .bg-dark-card {
+            background: linear-gradient(135deg, #0d0d0d 0%, #070707 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d97706;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="selection:bg-amber-600 selection:text-white overflow-x-hidden">
+
+    <!-- TOP CINEMATIC FLOATING BAR -->
+    <div class="w-full bg-black/80 backdrop-blur-md border-b border-zinc-800 py-3 px-6 sticky top-0 z-50 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+            <span class="text-xs uppercase tracking-widest font-bold text-zinc-400">Código do Protagonista</span>
+        </div>
+        <a href="#comprar" class="bg-amber-600 hover:bg-amber-500 transition-all text-black font-extrabold text-xs uppercase tracking-wider px-4 py-1.5 rounded border border-amber-400/40">
+            Adquirir Licença Vitalícia
+        </a>
+    </div>
+
+    <!-- MAIN HERO & COVER (ESTILO SITE GRINGO) -->
+    <header class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden border-b border-zinc-900">
+        <!-- Background Cinematic Image (Dark Silhouette/Rainy Tokyo Style) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1920" alt="Cinematic background" class="w-full h-full object-cover opacity-15 filter grayscale contrast-125">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto space-y-6 mt-12">
+            <span class="text-amber-500 tracking-[0.3em] uppercase text-xs font-bold bg-amber-500/10 px-4 py-1.5 rounded-full border border-amber-500/20">
+                O SISTEMA COMPLETO DE MENTALIDADE, CONTEÚDO E RENDA ONLINE
+            </span>
+            
+            <h1 class="text-5xl md:text-8xl font-black text-white leading-none tracking-tight">
+                CÓDIGO DO <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-600 glow-amber">PROTAGONISTA</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-light">
+                Escreva seu próprio roteiro. Pare de assistir ao sucesso alheio como um mero espectador nas sombras. Domine a atenção, domine o algoritmo e construa sua própria liberdade.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+                <a href="#leitura" class="w-full sm:w-auto px-8 py-4 bg-white text-black font-extrabold rounded hover:bg-zinc-200 transition-all text-sm uppercase tracking-wider shadow-lg shadow-white/5">
+                    Começar a Ler Agora
+                </a>
+                <a href="#comprar" class="w-full sm:w-auto px-8 py-4 bg-zinc-900 text-amber-500 border border-amber-500/30 font-extrabold rounded hover:bg-zinc-800 transition-all text-sm uppercase tracking-wider">
+                    Garantir Bônus Exclusivos
+                </a>
+            </div>
+
+            <p class="text-xs text-zinc-500 italic mt-4">
+                "O mundo não pertence a quem aceita o papel de coadjuvante."
+            </p>
+        </div>
+    </header>
+
+    <!-- FLOATING SIDEBAR NAVIGATION (FOR EASY READING) -->
+    <div class="hidden lg:block fixed left-6 top-1/4 z-40 bg-zinc-950/90 border border-zinc-800/80 rounded-xl p-4 w-64 max-h-[60vh] overflow-y-auto backdrop-blur-sm">
+        <h4 class="text-xs font-bold text-amber-500 uppercase tracking-widest mb-3 pb-2 border-b border-zinc-800">Sumário de Acesso</h4>
+        <nav class="space-y-2 text-xs text-zinc-400">
+            <a href="#intro" class="block hover:text-white hover:translate-x-1 transition-all">Introdução — A Virada</a>
+            <a href="#cap1" class="block hover:text-white hover:translate-x-1 transition-all">Cap. 1 — A Psicologia</a>
+            <a href="#cap2" class="block hover:text-white hover:translate-x-1 transition-all">Cap. 2 — Identidade</a>
+            <a href="#cap3" class="block hover:text-white hover:translate-x-1 transition-all">Cap. 3 — O Sistema</a>
+            <a href="#cap4" class="block hover:text-white hover:translate-x-1 transition-all text-amber-400 font-semibold">Cap. 4 — Reels Virais</a>
+            <a href="#cap5" class="block hover:text-white hover:translate-x-1 transition-all text-amber-400 font-semibold">Cap. 5 — Frases que Vendem</a>
+            <a href="#cap6" class="block hover:text-white hover:translate-x-1 transition-all text-amber-400 font-semibold">Cap. 6 — Estrutura do Perfil</a>
+            <a href="#cap7" class="block hover:text-white hover:translate-x-1 transition-all text-amber-400 font-semibold">Cap. 7 — Monetização Real</a>
+            <a href="#cap8" class="block hover:text-white hover:translate-x-1 transition-all">Cap. 8 — Dinheiro como Arma</a>
+            <a href="#cap9" class="block hover:text-white hover:translate-x-1 transition-all">Cap. 9 — O Arco de 90 Dias</a>
+            <a href="#conclusao" class="block hover:text-white hover:translate-x-1 transition-all">Conclusão — Cena Final</a>
+            <a href="#bonus" class="block hover:text-white hover:translate-x-1 transition-all text-amber-500">Bônus Especiais</a>
+        </nav>
+    </div>
+
+    <!-- EBOOK CONTAINER -->
+    <main id="leitura" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
+
+        <!-- INTRODUÇÃO -->
+        <section id="intro" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Prólogo</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">O Momento Antes da Virada</h2>
+            </div>
+            
+            <!-- Cinematic Illustration -->
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200" alt="Tokyo rain" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"A chuva escorre pela janela do metrô lotado. O reflexo no vidro mostra alguém cansado de viver no piloto automático."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Imagine a cena. São 23h45 de uma terça-feira chuvosa. Você está de pé no transporte público, ou deitado na sua cama encarando o teto do quarto escuro, enquanto o feed do seu celular rola infinitamente. Vídeos de pessoas da sua idade viajando, conquistando a liberdade financeira, comprando carros, vivendo a vida nos seus próprios termos. Na sua mente, um misto de frustração silenciosa e uma pergunta ácida que se repete toda noite: <em>"Por que eles e não eu?"</em></p>
+                
+                <p>A verdade fria que ninguém te conta é que você aceitou um papel que nunca foi seu. Você foi condicionado a ser o coadjuvante na sua própria jornada. Aquele que assiste, que comenta, que dá o like, que bate palma para as conquistas dos outros enquanto a sua própria barra de progresso continua congelada em zero.</p>
+                
+                <p>Os grandes protagonistas das histórias que você consome nos cinemas e nos animes não nasceram prontos. Eren Yeager era fraco. Naruto era um rejeitado. Bruce Wayne teve que descer ao fundo do poço para forjar sua armadura. O que os diferencia da massa anestesiada não é o talento nato, mas sim a posse de um <strong>sistema invisível de evolução contínua</strong>. Eles possuem um código. Um conjunto de diretrizes de mentalidade e ação que transforma cada cicatriz em combustível e cada barreira em um degrau inevitável.</p>
+                
+                <p>Neste livro, nós vamos quebrar a Matrix do mercado de infoprodutos tradicional. Esqueça as mentiras dos falsos gurus de terno alugado e as promessas fáceis de enriquecimento sem esforço. O que você tem em mãos é um manual de engenharia social, psicologia de alta performance e engenharia de algoritmos de vídeo. Você vai aprender a usar a mesma estética dark e visceral que paralisa milhões de pessoas no Instagram para construir o seu império digital do absoluto zero.</p>
+                
+                <p>Prepare-se. O prelúdio acabou. A partir desta página, sua vida deixa de ser um drama passivo e se torna um arco de conquista brutal.</p>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 1 -->
+        <section id="cap1" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 01</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">A Psicologia do Protagonista</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=1200" alt="Naruto study" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"Não é sobre nunca cair. É sobre a convicção quase irracional de que, independentemente de quantas vezes você morda o chão, o final da história pertence a você."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Por que os personagens que você mais admira continuam de pé quando todos ao redor já desistiram? Em <em>Attack on Titan</em>, Eren Yeager não possuía a maior força física ou o plano mais brilhante de início, mas ele tinha uma obsessão incurável pela liberdade que o impedia de aceitar as muralhas como seu destino final. Em <em>Fullmetal Alchemist</em>, Edward Elric perdeu partes do próprio corpo, mas recusou-se a aceitar as leis imutáveis do destino sem lutar.</p>
+                
+                <p>A diferença crucial entre a <strong>mentalidade de coadjuvante</strong> e a <strong>mentalidade de protagonista</strong> resume-se à forma como você gerencia o atrito. O coadjuvante busca o conforto; ele desiste na segunda semana de postagens porque o engajamento foi baixo ou porque um comentário negativo feriu seu ego frágil. Ele enxerga o fracasso como um ponto final. O protagonista, por outro lado, enxerga o fracasso apenas como uma cena de transição necessária para o seu <em>arco de evolução</em>.</p>
+                
+                <p>O seu arco de evolução na vida real funciona exatamente como a jornada de Joseph Campbell ou as fases de treino de um guerreiro Shonen:</p>
+                
+                <ol class="list-decimal list-inside space-y-3 pl-4 text-zinc-300">
+                    <li><strong class="text-white">O Chamado à Aventura:</strong> A percepção dolorosa de que a vida atual é pequena demais para o seu potencial.</li>
+                    <li><strong class="text-white">A Queda Inicial:</strong> O momento em que você tenta algo novo (como criar conteúdo ou vender online) e falha miseravelmente, percebendo que o caminho exige maestria.</li>
+                    <li><strong class="text-white">O Treinamento na Caverna:</strong> O período de isolamento produtivo, onde você estuda copy, edição de vídeo, tráfego e mentalidade longe dos holofotes.</li>
+                    <li><strong class="text-white">O Retorno Triunfante:</strong> A aplicação do conhecimento de forma cirúrgica, até que o sucesso pareça "inevitável" e "fácil" para os observadores externos.</li>
+                </ol>
+
+                <p>Se você desistiu em tentativas passadas, foi porque não aceitou que a fase de queda e treinamento são obrigatórias. Você queria a glória do último episódio sem passar pela dor do treinamento rigoroso na chuva.</p>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — Definindo seu Arco</h4>
+                    <p class="text-sm text-zinc-400 mb-4">Escreva em um papel ou bloco de notas a sua resposta sincera para as seguintes perguntas:</p>
+                    <ul class="space-y-2 text-xs text-zinc-300 list-disc list-inside">
+                        <li>Qual é a "muralha" atual na sua vida que você recusa aceitar como limite? (Ex: falta de dinheiro, emprego sem futuro, estagnação intelectual).</li>
+                        <li>Quais são os 3 sacrifícios diários que você está disposto a fazer durante os próximos 30 dias na sua "caverna de treinamento"?</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 2 -->
+        <section id="cap2" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 02</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">Identidade Antes do Resultado</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=1200" alt="Cyberpunk neon" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"O rei não se torna rei quando colocam a coroa em sua cabeça. Ele se torna rei quando decide agir como tal nas trincheiras."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>O erro cometido por 90% dos jovens que tentam ganhar dinheiro online é a busca desesperada pela recompensa sem a alteração da própria identidade. Eles querem o faturamento de cinco dígitos na Kiwify, mas continuam mantendo a rotina, a linguagem corporal, os vícios e os pensamentos de alguém que acorda ao meio-dia e procrastina diante de qualquer dificuldade.</p>
+                
+                <p>Nos animes, os grandes personagens já agem como a sua <strong>"versão futura"</strong> muito antes de alcançá-la. Luffy nunca disse que <em>tentaria</em> ser o Rei dos Piratas; ele sempre afirmou, com uma certeza quase violenta, que <em>ele é</em> o Rei dos Piratas. Ele se veste, fala, luta e toma decisões sob essa premissa de identidade identitária muito antes de sequer encontrar o primeiro tesouro.</p>
+                
+                <p>Sua identidade é a âncora que impede você de flutuar sem rumo no mercado digital. Se você se enxerga apenas como "alguém que está tentando fazer uma graninha extra", o algoritmo vai farejar sua fraqueza. Suas edições de vídeo serão desleixadas, seus textos serão superficiais e sua oferta será tímida. Você precisa mudar quem você é antes de mudar o saldo da sua conta bancária.</p>
+                
+                <p>Para construir uma identidade de protagonista em 30 dias, você deve adotar o princípio da <strong>Incongruência de Estado</strong>: agir de forma tão impecável que o seu ambiente atual pareça completamente incompatível com a sua postura. Se o seu quarto está bagunçado, se sua mesa de trabalho é um caos e se sua mente está dispersa por dopamina barata, você está sinalizando para o universo que aceita a mediocridade.</p>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — O Teste da Identidade Futura</h4>
+                    <p class="text-sm text-zinc-400 mb-4">Durante as próximas 24 horas, antes de tomar qualquer decisão menor (como rolar o feed de forma inútil, comer algo ruim ou procrastinar a postagem do seu vídeo), faça a si mesmo a pergunta definitiva:</p>
+                    <blockquote class="border-l-2 border-amber-500 pl-4 my-2 text-xs italic text-zinc-300">
+                        "A versão de mim que fatura R$ 10.000 por mês no digital tomaria essa decisão agora?"
+                    </blockquote>
+                    <p class="text-xs text-zinc-400 mt-2">Se a resposta for não, mude o comportamento imediatamente. Force a incongruência até que ela se torne o seu novo padrão.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 3 -->
+        <section id="cap3" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 03</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">O Sistema dos Fortes</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=1200" alt="Grit workout dark" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"A consistência silenciosa constrói monumentos que o barulho das desculpas jamais conseguirá arranhar."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Esqueça os rituais de produtividade perfeitos de criadores de conteúdo que vivem em mansões luxuosas. Você precisa de um sistema de sobrevivência e evolução realista, desenhado para quem tem pouco tempo e precisa conciliar trabalho, estudos e a construção do império digital em paralelo.</p>
+                
+                <p>Os maiores criadores de conteúdo dark do Brasil não contam com a sorte. Eles operam como máquinas de execução sistemática. Eles dividem o dia em blocos de foco inquebráveis, aplicando o conceito de <strong>Deep Work</strong> (Trabalho Profundo) para produzir mais em 2 horas do que a maioria produz em uma semana inteira de distrações.</p>
+                
+                <h3 class="text-xl font-bold text-white mt-8">A Rotina do Protagonista Atarefado</h3>
+                
+                <div class="space-y-4 my-6">
+                    <div class="p-4 bg-zinc-900/40 rounded border border-zinc-800">
+                        <span class="text-amber-500 font-bold text-sm block">Bloco da Manhã (Despertar & Blindagem) — 06:00 às 08:00</span>
+                        <p class="text-xs text-zinc-400 mt-1">Sem redes sociais nos primeiros 30 minutos. Consumo de água, 15 minutos de leitura densa e definição das 3 tarefas cruciais do dia. Se você trabalha CLT, este é o momento em que você trabalha no seu próprio negócio antes de vender suas horas para terceiros.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/40 rounded border border-zinc-800">
+                        <span class="text-amber-500 font-bold text-sm block">Bloco da Tarde (Manutenção e Captura) — Intervalos de Dia</span>
+                        <p class="text-xs text-zinc-400 mt-1">Utilize momentos de transição para capturar ideias. Guarde inspirações de áudios em alta no Instagram, anote frases marcantes de livros, séries ou animes. Salve tudo em uma pasta de referências rápida.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/40 rounded border border-zinc-800">
+                        <span class="text-amber-500 font-bold text-sm block">Bloco da Noite (Execução e Escala) — 20:00 às 22:30</span>
+                        <p class="text-xs text-zinc-400 mt-1">Foco total em produção técnica. Sem notificações de celular. Edição de vídeos em lote, escrita de copy de vendas, estruturação de páginas e refinamento dos canais orgânicos.</p>
+                    </div>
+                </div>
+
+                <p>O segredo da escala orgânica não é criar um vídeo do zero todo santo dia. É a **produção em lote**. Se você reservar um único bloco de 4 horas no seu final de semana para roteirizar e editar, você consegue gerar o conteúdo de um mês inteiro de forma profissional e sem o estresse diário da falta de ideias.</p>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — O Pacto das Horas Sagradas</h4>
+                    <p class="text-sm text-zinc-400 mb-2">Defina um bloco inegociável de pelo menos **90 minutos diários** na sua agenda onde o celular ficará em outro cômodo e o foco será exclusivo na criação do seu infoproduto ou na edição dos seus vídeos.</p>
+                    <p class="text-xs text-amber-500/80 font-mono">Compromisso assinado silenciosamente por você a partir de agora.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 4 -->
+        <section id="cap4" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 04 — O Santo Graal Técnico</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">A Fórmula dos Reels Virais com Anime e Filmes</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1560169897-fc0cdbdfa4d5?auto=format&fit=crop&q=80&w=1200" alt="Cinematic camera lens" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"A atenção é a nova moeda global. Quem domina os primeiros três segundos do scroll domina as decisões de compra da audiência."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Este é o coração técnico da sua engrenagem de vendas orgânicas. Nas redes sociais modernas, o recurso mais disputado, caro e valioso do planeta chama-se **atenção**. Bilhões de pessoas rolam a tela infinitamente todos os dias em busca de estímulos emocionais rápidos. Quem domina a arte do <strong>Scroll-Stop</strong> acumula visualizações, seguidores e, consequentemente, vendas maciças sem gastar um único centavo em anúncios pagos.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Psicologia do Scroll-Stop nos Primeiros 3 Segundos</h3>
+                <p>Quando alguém desliza o feed rápido no Instagram ou TikTok, o cérebro opera em um nível de processamento subconsciente extremamente acelerado. Para fazê-lo parar o dedo na tela, você precisa ativar uma de duas reações primitivas instantâneas: **identificação emocional extrema** ou **quebra de expectativa visual**.</p>
+                
+                <p>Cenas de animes icônicos e filmes com forte apelo cinematográfico (como <em>Batman: O Cavaleiro das Trevas</em>, <em>Peaky Blinders</em>, <em>Clube da Luta</em> ou <em>Blade Runner 2049</em>) já carregam bilhões de dólares investidos em iluminação, paleta de cores, atuação e composição visual. Quando você utiliza uma dessas cenas esteticamente perfeitas acompanhada de um texto altamente persuasivo, você se apropria de todo o valor de produção de Hollywood para capturar a atenção do seu cliente em potencial.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Como Escolher a Cena Certa para Cada Emoção</h3>
+                <p>Vídeos que viralizam não vendem produtos; eles vendem estados emocionais. Você precisa casar a cena correta com a mensagem que deseja transmitir:</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <span class="text-amber-500 font-bold block">1. Ambição & Conquista</span>
+                        <p class="text-xs text-zinc-400 mt-1">Cenas de personagens caminhando sob a chuva com roupas elegantes (como Thomas Shelby), ou o silêncio focado de Bruce Wayne treinando. Use para falar de negócios e construção de metas futuras.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <span class="text-amber-500 font-bold block">2. Raiva & Dor Canalizada</span>
+                        <p class="text-xs text-zinc-400 mt-1">Cenas de transformação extrema (Goku atingindo o Instinto Superior, Eren com olhar determinado sob a fumaça de um titã). Ideal para quebrar mentiras e atacar a preguiça da audiência.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <span class="text-amber-500 font-bold block">3. Solidão Produtiva & Foco</span>
+                        <p class="text-xs text-zinc-400 mt-1">Cenas chuvosas de Tóquio à noite, luzes de neon de Blade Runner, ou personagens encarando paisagens vastas e vazias. Use para falar sobre trabalhar em silêncio e evoluir longe dos olhos de todos.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <span class="text-amber-500 font-bold block">4. Alívio & Superação</span>
+                        <p class="text-xs text-zinc-400 mt-1">Olhares de alívio após batalhas brutais, sorrisos sutis de determinação em meio a cicatrizes. Use para validar as dores do seguidor e mostrar que há saída se ele seguir o plano correto.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Estrutura Milimétrica do Reel Viral</h3>
+                <p>Um vídeo de alta conversão não é montado de forma aleatória. Cada segundo é projetado para segurar a retenção lá em cima (o fator mais importante no algoritmo do Instagram em 2026):</p>
+
+                <ul class="space-y-4 my-6">
+                    <li class="border-l-2 border-amber-500 pl-4">
+                        <strong class="text-white text-sm block">0.0 a 3.0s — O Gancho Crucial (Hook):</strong>
+                        <span class="text-xs text-zinc-400">Uma frase impactante que ataca uma dor profunda ou quebra uma crença comum. A cena deve ter movimento rápido ou alta expressão emocional. Nenhuma introdução longa é permitida aqui.</span>
+                    </li>
+                    <li class="border-l-2 border-amber-500 pl-4">
+                        <strong class="text-white text-sm block">3.1 a 7.0s — O Desenvolvimento Filosófico:</strong>
+                        <span class="text-xs text-zinc-400">Duas ou três linhas explicativas curtas que se conectam diretamente com o gancho, prendendo a atenção de quem parou para ler. O corte de vídeo deve sincronizar com o ritmo da música.</span>
+                    </li>
+                    <li class="border-l-2 border-amber-500 pl-4">
+                        <strong class="text-white text-sm block">7.1 a 10.0s — A Chamada para Ação Implícita ou Explícita (CTA):</strong>
+                        <span class="text-xs text-zinc-400">Em vez de implorar por likes, direcione a audiência para ler a legenda ou comentar uma palavra específica para receber um script secreto pelo direct (ex: "Comente CÓDIGO para receber o manual").</span>
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Os 5 Formatos de Reels que Mais Viralizam em 2026</h3>
+                
+                <div class="space-y-4">
+                    <div class="p-5 bg-zinc-900/80 border border-zinc-800 rounded-lg">
+                        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest block mb-1">Formato 1</span>
+                        <h4 class="text-white font-bold text-base">POV (Point of View / Ponto de Vista)</h4>
+                        <p class="text-xs text-zinc-400 mt-1">Exemplo: "POV: Você percebeu que a única pessoa que pode te salvar da mediocridade está te encarando no espelho toda manhã." Cenas de close-up no rosto de um personagem expressando profundidade e reflexão imediata.</p>
+                    </div>
+                    <div class="p-5 bg-zinc-900/80 border border-zinc-800 rounded-lg">
+                        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest block mb-1">Formato 2</span>
+                        <h4 class="text-white font-bold text-base">"O momento exato em que X percebeu que..."</h4>
+                        <p class="text-xs text-zinc-400 mt-1">Exemplo: "O momento exato em que você percebe que a estabilidade é apenas uma ilusão confortável para te manter dócil." Cenas de choques de realidade, desmoronamento de cenários, ou silhuetas misteriosas.</p>
+                    </div>
+                    <div class="p-5 bg-zinc-900/80 border border-zinc-800 rounded-lg">
+                        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest block mb-1">Formato 3</span>
+                        <h4 class="text-white font-bold text-base">"Chegou o dia em que eles cansaram de..."</h4>
+                        <p class="text-xs text-zinc-400 mt-1">Exemplo: "Chegou o dia em que o cara mais quieto e trabalhador da sala simplesmente decidiu construir o próprio império em silêncio." Cenas de marcha decidida, superação de obstáculos e treinamento intenso.</p>
+                    </div>
+                    <div class="p-5 bg-zinc-900/80 border border-zinc-800 rounded-lg">
+                        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest block mb-1">Formato 4</span>
+                        <h4 class="text-white font-bold text-base">Cena Cinematográfica + Frase Filosófica Minimalista</h4>
+                        <p class="text-xs text-zinc-400 mt-1">Exemplo: Uma cena chuvosa de anime em altíssima definição com o texto: "O preço de ser comum é alto demais para quem nasceu com fome de conquistas." Extremamente limpo, focado na estética e no ritmo lento.</p>
+                    </div>
+                    <div class="p-5 bg-zinc-900/80 border border-zinc-800 rounded-lg">
+                        <span class="text-amber-400 font-mono text-xs uppercase tracking-widest block mb-1">Formato 5</span>
+                        <h4 class="text-white font-bold text-base">Antes e Depois Emocional</h4>
+                        <p class="text-xs text-zinc-400 mt-1">Exemplo: Cenas iniciais de desânimo do personagem cortadas rapidamente para cenas de poder máximo e liderança. Perfeito para contar histórias de transformação pessoal.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Como Criar 30 Reels em um Único Dia de Forma Inteligente</h3>
+                <p>Você não precisa gastar 4 horas por dia caçando vídeos na internet. Siga este processo operacional de escala acelerada:</p>
+                <ol class="list-decimal list-inside space-y-2 text-xs text-zinc-300">
+                    <li><strong class="text-white">Criação do Banco de Vídeos:</strong> Baixe pacotes de cenas cinematic em alta definição de animes e filmes (procure por canais de "Scene Pack" no Telegram ou YouTube, ou vídeos de estética "No Copyright" no TikTok).</li>
+                    <li><strong class="text-white">Roteirização em Planilha:</strong> Escreva 30 ganchos baseados nas 100 frases do bônus deste livro em uma única tarde, organizando as legendas curtas para cada uma.</li>
+                    <li><strong class="text-white">Edição em Massa no CapCut:</strong> Abra o CapCut no PC ou Celular, crie um projeto base com sua tipografia escura configurada, arraste os clipes selecionados de 7 a 9 segundos, insira os textos salvos na planilha, adicione uma trilha sonora marcante e exporte tudo em 1080p a 60fps.</li>
+                </ol>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — Seu Primeiro Reel Viral</h4>
+                    <p class="text-sm text-zinc-400 mb-4">Crie um Reel seguindo este exato modelo hoje mesmo:</p>
+                    <div class="space-y-2 text-xs text-zinc-300 bg-black/60 p-4 rounded border border-zinc-800 font-mono">
+                        <p><strong class="text-amber-400">Cena:</strong> Batman em cima da torre olhando para a cidade de Gotham sob a chuva à noite (em câmera lenta).</p>
+                        <p><strong class="text-amber-400">Texto na tela:</strong> "Você não está cansado de assistir à vitória de quem tem metade da sua coragem?"</p>
+                        <p><strong class="text-amber-400">Música:</strong> Trilha de suspense dark instrumental ou remix desacelerado (Phonky/Ambient).</p>
+                        <p><strong class="text-amber-400">Legenda:</strong> "A maioria se esconde atrás de desculpas porque o medo de falhar é maior do que a vontade de vencer. Mas para quem segue o Código, cada erro é só mais um corte na nossa edição final. Digite PROTAGONISTA no meu direct para dar o primeiro passo."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 5 -->
+        <section id="cap5" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 05 — Copywriting de Elite</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">Frases que Vendem sem Parecer que Estão Vendendo</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=1200" alt="Writing dark desk" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"A verdadeira persuasão não empurra um produto. Ela puxa a dor latente de quem está lendo e oferece a cura invisível."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>O maior erro de um copywriter iniciante é gritar "Compre agora" para uma audiência que sequer confia nele ainda. No mercado digital orgânico, o foco é a criação de **conexão profunda**. Você precisa criar frases que ajam como um **espelho emocional** para quem as lê, fazendo o seguidor sentir que você está lendo os pensamentos mais íntimos e secretos dele.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Estrutura da Persuasão Cinematográfica</h3>
+                <p>Nossa técnica baseia-se na tríade: **Tensão Emocional, Virada de Perspectiva e Alívio com Resolução**:</p>
+                
+                <ul class="space-y-4 my-6 list-disc list-inside text-zinc-300 text-sm">
+                    <li><strong class="text-white">Tensão:</strong> Mostre que você conhece o maior pesadelo ou falha do seu leitor. (Ex: "Você continua acordando sem perspectiva, vendendo as melhores horas do seu dia para enriquecer um chefe que não sabe seu nome.")</li>
+                    <li><strong class="text-white">Virada:</strong> Quebre a desculpa habitual dele, tirando o peso da culpa externa e colocando a responsabilidade de volta em suas mãos. (Ex: "Mas você se convenceu de que o mercado está saturado só para se sentir confortável ao desistir sem lutar.")</li>
+                    <li><strong class="text-white">Alívio/Resolução:</strong> Apresente a saída clara que você trilhou ou organizou para ele. (Ex: "Existe uma engrenagem que opera silenciosa enquanto você dorme. E o manual dela está no meu perfil.")</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">30 Modelos de Frases Prontas para Alta Conversão</h3>
+                <p class="text-sm text-zinc-400">Divididas por nichos cruciais para você copiar, colar e aplicar nas suas postagens:</p>
+
+                <div class="space-y-4 my-6">
+                    <div class="p-4 bg-zinc-900/40 border border-zinc-800 rounded">
+                        <span class="text-amber-400 font-bold text-xs block uppercase mb-2">Nicho: Desenvolvimento Pessoal / Mentalidade</span>
+                        <ul class="space-y-2 text-xs text-zinc-300 list-disc list-inside">
+                            <li>"Você é o herói da sua própria história, então pare de aceitar os conselhos de quem desistiu na primeira batalha."</li>
+                            <li>"O silêncio do seu progresso vai incomodar muita gente que adora te ver estagnado."</li>
+                            <li>"Seja o monstro invisível que trabalha enquanto os outros estão ocupados ostentando conquistas vazias."</li>
+                            <li>"Você não tem medo de falhar. Você tem medo do que as mentes pequenas vão cochichar pelas suas costas."</li>
+                            <li>"A dor do arrependimento pesa toneladas. A dor da disciplina pesa gramas. Escolha o seu fardo hoje."</li>
+                            <li>"Eles querem te ver bem, mas nunca melhor do que eles. Lembre-se disso na próxima vez que compartilhar seus planos."</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-zinc-900/40 border border-zinc-800 rounded">
+                        <span class="text-amber-400 font-bold text-xs block uppercase mb-2">Nicho: Negócios & Renda Online</span>
+                        <ul class="space-y-2 text-xs text-zinc-300 list-disc list-inside">
+                            <li>"Enquanto você passa 4 horas rolando o feed em busca de diversão, tem gente faturando R$ 300 por dia usando o mesmo celular."</li>
+                            <li>"Se o seu plano de carreira depende do humor do seu chefe para te dar um aumento, você já faliu e só não percebeu."</li>
+                            <li>"O algoritmo não quer apenas o seu tempo, ele quer manter você na pobreza assistindo a quem ousou quebrar as regras."</li>
+                            <li>"Você não precisa de um escritório luxuoso. Você precisa de um notebook, Wi-Fi e uma obsessão irracional de vencer."</li>
+                            <li>"O dinheiro é apenas um amplificador. Se você é covarde sem ele, continuará sendo covarde quando for rico."</li>
+                            <li>"Seu primeiro faturamento digital de R$ 1.000 vai fazer você perceber que a faculdade convencional foi a maior mentira do século."</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-zinc-900/40 border border-zinc-800 rounded">
+                        <span class="text-amber-400 font-bold text-xs block uppercase mb-2">Nicho: Autoconhecimento & Relacionamentos</span>
+                        <ul class="space-y-2 text-xs text-zinc-300 list-disc list-inside">
+                            <li>"Mendigando atenção de quem só te enxerga como uma opção secundária? Isso é comportamento de coadjuvante."</li>
+                            <li>"Torne-se tão valioso e focado que a presença dos outros passe a ser um bônus opcional e nunca uma necessidade desesperada."</li>
+                            <li>"Quem se contenta com migalhas emocionais nunca terá forças para governar o próprio destino."</li>
+                            <li>"O preço que você paga por não impor limites é ser arrastado pelas vontades de quem não tem compromisso com o seu futuro."</li>
+                            <li>"Corte os parasitas emocionais da sua vida antes que eles transformem sua ambição em poeira."</li>
+                            <li>"O respeito se constrói quando você decide se afastar das mesas onde o seu valor não é devidamente honrado."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — O Espelho de Copy</h4>
+                    <p class="text-sm text-zinc-400 mb-2">Pegue uma das frases acima do nicho que deseja atuar e reescreva-a com suas próprias palavras, inserindo uma gíria ou um termo que conecte com seu público ideal (ex: "nerd", "massa", "brother").</p>
+                    <p class="text-xs text-zinc-500">Mantenha a estrutura de tensão e virada sempre intactas.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 6 -->
+        <section id="cap6" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 06 — O Funil Orgânico</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">A Estrutura do Perfil que Vende no Orgânico</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1200" alt="Instagram smartphone look" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"Não trate seu perfil como um diário pessoal. Ele é uma máquina de tração, filtragem e monetização constante."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Criar vídeos virais é inútil se o tráfego gerado por eles escoar por um perfil desorganizado e confuso. Pense no seu perfil do Instagram como a vitrine de uma grife internacional de luxo na avenida principal: ela precisa ser misteriosa, limpa, esteticamente impecável e extremamente convidativa para o fechamento de transações imediatas.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Bio Profissional que Converte (Linha por Linha)</h3>
+                <p>Você tem menos de 5 segundos para que um visitante decida se vai te seguir ou sair do seu perfil para sempre. Cada linha da sua biografia deve ter um papel fundamental:</p>
+                
+                <div class="p-5 bg-zinc-900/60 border border-zinc-800 rounded-lg space-y-3 my-6 font-mono text-xs">
+                    <p><strong class="text-amber-500">Linha 1 — Proposta de Valor Exclusiva:</strong> O que você faz e quem você ajuda de forma impactante. <br><em class="text-zinc-400">Ex: "Te ajudo a quebrar as regras do sistema e faturar no digital usando estética dark."</em></p>
+                    <p><strong class="text-amber-500">Linha 2 — Autoridade sutil ou Prova de Conceito:</strong> Algo que prove que você sabe do que está falando sem parecer arrogante. <br><em class="text-zinc-400">Ex: "+ R$100k gerados sem aparecer e sem investir 1 real em anúncios."</em></p>
+                    <p><strong class="text-amber-500">Linha 3 — Chamada para Ação (CTA) Direta:</strong> O que ele deve fazer após ler a bio. <br><em class="text-zinc-400">Ex: "Pegue seu manual gratuito no link abaixo 👇"</em></p>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Estética do Feed Dark Cinematográfico</h3>
+                <p>O seu feed não deve parecer uma colcha de retalhos colorida cheia de designs genéricos do Canva. Mantenha uma paleta de cores restrita: **foco absoluto em preto, cinza escuro, branco e detalhes em âmbar ou dourado**. Todas as postagens devem carregar o mesmo estilo tipográfico e filtros de contraste elevado que conferem mistério e seriedade.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">O Funil Orgânico de Tráfego de Alta Conversão</h3>
+                <p>Aqui está o caminho exato que o dinheiro faz desde o celular do seu seguidor até a sua conta bancária:</p>
+
+                <div class="relative pl-8 space-y-6 border-l-2 border-zinc-800">
+                    <div class="relative">
+                        <span class="absolute -left-[39px] top-0.5 bg-amber-500 text-black font-extrabold text-xs rounded-full w-5 h-5 flex items-center justify-center">1</span>
+                        <h4 class="text-white font-bold text-sm">O Reel Viraliza:</h4>
+                        <p class="text-xs text-zinc-400">Um vídeo bem estruturado do capítulo 4 atinge 100.000 pessoas que nunca te viram antes. O gancho atrai a atenção e a CTA convida para visitar o perfil.</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute -left-[39px] top-0.5 bg-amber-500 text-black font-extrabold text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                        <h4 class="text-white font-bold text-sm">O Filtro da Bio:</h4>
+                        <p class="text-xs text-zinc-400">O visitante entra no seu perfil, vê uma estética unificada e marcante, lê sua biografia impactante e clica no link estratégico (ou te envia uma mensagem direta no direct).</p>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute -left-[39px] top-0.5 bg-amber-500 text-black font-extrabold text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
+                        <h4 class="text-white font-bold text-sm">O Aquecimento nos Stories:</h4>
+                        <p class="text-xs text-zinc-400">Quem te seguiu começa a acompanhar seus stories diários, onde você mostra bastidores do seu "treinamento", compartilha resultados reais, quebra objeções e faz ofertas diretas.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Como Crescer do Zero aos Primeiros 10k Seguidores de Forma Veloz</h3>
+                <p>Para acelerar seu crescimento no Instagram orgânico sem pagar por anúncios em 2026, você precisa seguir as diretrizes do algoritmo moderno:</p>
+                <ul class="space-y-2 text-xs text-zinc-300 list-disc list-inside">
+                    <li><strong class="text-white">Frequência cirúrgica:</strong> Poste exatamente 2 Reels por dia durante os primeiros 45 dias. O algoritmo precisa de amostragem constante para entender quem é o seu nicho ideal.</li>
+                    <li><strong class="text-white">Otimização de SEO:</strong> Coloque palavras-chave importantes do seu nicho (ex: "renda online", "disciplina", "marketing digital") no título e nas legendas dos seus posts para aparecer nas buscas recomendadas.</li>
+                    <li><strong class="text-white">Engajamento ativo de entrada:</strong> Nos primeiros 30 minutos após postar, responda a todos os comentários do seu Reel de forma inteligente para forçar o engajamento orgânico inicial.</li>
+                </ul>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — Redesenhando seu Perfil</h4>
+                    <p class="text-sm text-zinc-400 mb-2">Aplique a nova estrutura no seu Instagram agora mesmo. Altere sua foto de perfil para uma imagem minimalista de alta qualidade, redesenhe sua biografia usando o modelo de 3 linhas fornecido e limpe qualquer postagem antiga que quebre a harmonia estética do seu novo eu.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 7 -->
+        <section id="cap7" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 07 — Monetização Extrema</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">Como Ganhar Dinheiro com Perfis Online: Do Zero ao Primeiro Pagamento</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&q=80&w=1200" alt="Dashboard earnings money" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"A admiração da sua audiência é um ativo valioso, mas só a monetização profissional valida de fato o seu sistema de protagonista."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Nenhum protagonista de verdade joga por diversão. Nós jogamos por liberdade, e a liberdade no mundo real é comprada com independência financeira. Neste capítulo, vamos quebrar os esquemas exatos de monetização para transformar sua audiência em uma máquina de faturamento regular.</p>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">As 5 Formas de Ganhar Dinheiro com Perfil no Instagram em 2026</h3>
+                
+                <div class="space-y-4">
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <strong class="text-white block">1. Criação e Venda de Infoprodutos Próprios (Ebooks & Mini-Cursos)</strong>
+                        <p class="text-xs text-zinc-400 mt-1">É a forma de maior margem de lucro. Você empacota sua própria transformação pessoal ou habilidades práticas em um formato digital e vende diretamente na Kiwify ou Hotmart por preços acessíveis que geram compras por impulso (R$ 27 a R$ 97).</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <strong class="text-white block">2. Marketing de Afiliados Estratégico</strong>
+                        <p class="text-xs text-zinc-400 mt-1">Se você ainda não tem um produto próprio, pode se afiliar a infoprodutos existentes de alta conversão e ganhar de 50% a 70% de comissão por venda gerada a partir do seu conteúdo orgânico, sem se preocupar com suporte ou entrega.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <strong class="text-white block">3. Comunidades por Assinatura (Membro VIP / Clubes Dark)</strong>
+                        <p class="text-xs text-zinc-400 mt-1">Criação de um portal recorrente (ex: R$ 19,90 por mês) onde você fornece conteúdos exclusivos, templates de edição, pacotes de cenas e discussões valiosas para a comunidade de forma contínua.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <strong class="text-white block">4. Mentorias de Foco de Alta Performance</strong>
+                        <p class="text-xs text-zinc-400 mt-1">Atendimento individual personalizado para pessoas que precisam de acompanhamento estrito para aplicar o sistema de mentalidade e negócios nas suas vidas cotidianas. Ofereça pacotes premium (R$ 497+).</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded">
+                        <strong class="text-white block">5. Publiposts de Marcas Alinhadas ao Nicho</strong>
+                        <p class="text-xs text-zinc-400 mt-1">À medida que seu perfil cresce em engajamento e fidelidade, marcas de roupas streetwear, periféricos gamers ou marcas tecnológicas buscarão seu alcance para anunciar produtos físicos à sua base.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">Como Criar Seu Próprio Ebook de Sucesso em Menos de 7 Dias</h3>
+                <p>Muitos paralisam no processo de criação de produto achando que precisam de anos de pesquisa. Na verdade, tudo o que você precisa é organizar uma **resolução clara para uma dor pontual**:</p>
+                <ol class="list-decimal list-inside space-y-2 text-xs text-zinc-300">
+                    <li><strong class="text-white">Escolha do Tema Específico:</strong> Em vez de "Como ganhar dinheiro online" (amplo demais), crie "O Guia Prático para Ganhar Seus Primeiros R$ 2.000 com Reels Dark Sem Aparecer".</li>
+                    <li><strong class="text-white">Estruturação de Capítulos Lógicos:</strong> Divida a solução em 5 a 7 etapas fáceis de digerir.</li>
+                    <li><strong class="text-white">Escreva com Linguagem Direta:</strong> Foque na usabilidade prática. O leitor quer ação rápida e não teoria acadêmica cansativa. Use ferramentas gratuitas para organizar e exportar o PDF final.</li>
+                    <li><strong class="text-white">Design Minimalista:</strong> Crie a capa do seu ebook usando templates dark modernos no Canva e configure sua conta em plataformas de pagamento em minutos para iniciar as operações.</li>
+                </ol>
+
+                <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Estratégia de Escala: Dos R$ 500 aos R$ 5.000 por Mês</h3>
+                <p>Fazer as primeiras vendas é emocionante, mas o seu objetivo final é a previsibilidade financeira estável. Para construir um faturamento mensal consistente, você deve estruturar e seguir um funil automatizado baseado no comportamento de compra por impulso do consumidor digital.</p>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — Seu Planejamento de Lançamento Orgânico</h4>
+                    <p class="text-sm text-zinc-400 mb-2">Configure uma conta gratuita na Kiwify hoje. Crie as bases de um produto digital fictício ou de afiliação e desenhe o mapa dos seus próximos 3 stories focados em gerar curiosidade sem revelar o produto de cara (a famosa estratégia da antecipação silenciosa).</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 8 -->
+        <section id="cap8" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 08</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">Dinheiro como Ferramenta</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&q=80&w=1200" alt="Success minimalist office" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"O tolo gasta o que ganha para fingir uma vida que não tem. O sábio investe o que ganha para comprar o controle total sobre o próprio tempo."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>A maioria dos jovens que consegue faturar os primeiros milhares de reais no marketing digital comete o erro clássico do novo rico: comprar roupas de grife desnecessárias, ostentar em baladas caras e comprar passivos que drenam seu capital produtivo. Eles continuam escravos, apenas trocaram a gaiola de ferro por uma de ouro.</p>
+                
+                <p>Como protagonista de verdade, você deve enxergar cada real ganho não como um passaporte para o consumo desenfreado, mas sim como um **soldado no seu exército de libertação**. O dinheiro é uma ferramenta neutra que compra a sua independência intelectual, física e geográfica.</p>
+                
+                <p>Adote a regra de reinvestimento agressivo do iniciante:</p>
+                
+                <ul class="space-y-4 my-6 list-disc list-inside text-zinc-300">
+                    <li><strong class="text-white">Os Primeiros Lucros (Até R$ 2.000):</strong> Devem ser direcionados 100% para melhorar suas ferramentas de trabalho: um microfone melhor, uma assinatura de ferramenta de design avançada ou livros e treinamentos específicos de copywriter.</li>
+                    <li><strong class="text-white">O Faturamento de Escala (R$ 5.000+):</strong> Crie uma reserva de emergência inabalável correspondente a 6 meses do seu custo de vida mínimo para blindar sua mente contra pressões externas imediatas.</li>
+                    <li><strong class="text-white">A Fase de Multiplicação:</strong> Comece a diversificar em ativos financeiros sólidos para que sua renda pare de depender exclusivamente das suas horas de esforço direto diário.</li>
+                </ul>
+
+                <p>O guerreiro no campo de batalha não ostenta o tamanho do seu escudo, ele foca no seu peso e na sua capacidade de aguentar pancadas consecutivas em silêncio.</p>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — O Orçamento Blindado</h4>
+                    <p class="text-sm text-zinc-400 mb-2">Defina em uma planilha simples ou aplicativo financeiro o seu custo de vida atual de forma enxuta. Comprometa-se a poupar e reinvestir no seu próprio negócio pelo menos **40% de qualquer nova fonte de renda digital** obtida nos próximos meses.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CAPÍTULO 9 -->
+        <section id="cap9" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Capítulo 09</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">O Arco Final: Quem Você Vai Ser em 90 Dias</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&q=80&w=1200" alt="Mountain top path" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"As decisões que você toma no silêncio do seu quarto determinam o volume do barulho do seu sucesso amanhã."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>O plano foi totalmente traçado e entregue a você. A engenharia dos algoritmos de vídeo está decodificada, a psicologia de alta conversão está estruturada e a mentalidade inabalável foi forjada. Agora, a única variável entre a mediocridade atual e o seu arco final de vitória é a **velocidade da sua execução diária**.</p>
+                
+                <p>Nenhum protagonista hesita quando vê o caminho à frente desimpedido. Vamos estruturar os seus próximos 90 dias em fases implacáveis de ação:</p>
+
+                <div class="space-y-4 my-6">
+                    <div class="p-4 bg-zinc-900/40 rounded border border-zinc-800">
+                        <span class="text-amber-500 font-bold text-sm block">Dias 1 a 30: A Fase da Caverna & Alinhamento</span>
+                        <p class="text-xs text-zinc-400 mt-1">Nenhum foco em vendas ainda. Configure seu perfil, defina sua paleta de cores unificada, edite e agende seus primeiros 30 vídeos de Reels em lote e construa uma base forte de seguidores focada em conteúdo estético valioso.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/40 rounded border border-zinc-800">
+                        <span class="text-amber-500 font-bold text-sm block">Dias 31 a 60: Atração Orgânica & Criação do Ativo</span>
+                        <p class="text-xs text-zinc-400 mt-1">Colha os primeiros picos de visualizações orgânicas. Lance o seu infoproduto (ou configure sua afiliação) e integre o fluxo automatizado do direct para a sua página de vendas mobile nas publicações mais importantes.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-900/40 rounded border border-zinc-800">
+                        <span class="text-amber-500 font-bold text-sm block">Dias 61 a 90: Escala de Conversão & Otimização</span>
+                        <p class="text-xs text-zinc-400 mt-1">Analise as métricas frias de retenção dos seus vídeos. Refine seus textos de vendas nas páginas baseados no comportamento do cliente e comece a escalar seus ganhos diários rumo à consistência desejada.</p>
+                    </div>
+                </div>
+
+                <p>Você começou este livro como alguém que observava a vida passar pelas telas alheias. Agora, você tem o código para dominar o jogo de ponta a ponta. Não há desculpas aceitáveis para continuar nas sombras.</p>
+
+                <!-- EXERCÍCIO PRÁTICO -->
+                <div class="mt-8 p-6 bg-zinc-900/60 border border-amber-500/30 rounded-lg">
+                    <h4 class="text-amber-500 font-bold uppercase tracking-wider text-sm mb-3">Exercício Prático — A Assinatura de Compromisso</h4>
+                    <p class="text-sm text-zinc-400 mb-2">Escreva o seu nome em um local visível e assuma o compromisso definitivo de não quebrar a execução desse plano antes do prazo mínimo de 90 dias de consistência diária inabalável.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONCLUSÃO -->
+        <section id="conclusao" class="scroll-mt-24">
+            <div class="border-l-4 border-amber-500 pl-6 mb-8">
+                <span class="text-zinc-500 text-xs uppercase tracking-widest font-mono">Epílogo</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-2">A Cena Final</h2>
+            </div>
+
+            <div class="w-full h-80 rounded-lg overflow-hidden mb-8 border border-zinc-800 relative">
+                <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=1200" alt="Anime train station sunrise" class="w-full h-full object-cover filter grayscale contrast-125 brightness-50">
+                <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-sm p-4 rounded border border-zinc-800">
+                    <p class="text-xs text-amber-400 font-mono italic">"A noite sempre é mais escura logo antes do amanhecer. Mas o sol está surgindo no horizonte para quem decidiu caminhar sob as estrelas."</p>
+                </div>
+            </div>
+
+            <div class="space-y-6 text-zinc-300 leading-relaxed text-base md:text-lg">
+                <p>Imagine o encerramento do seu primeiro arco de transformação. São 06h00 de um novo dia, o ar está limpo e a luz dourada do amanhecer começa a preencher o horizonte iluminando seu quarto. O som sutil de uma notificação suave vibra no seu celular ao lado do computador. Você desbloqueia a tela e lá está o aviso da plataforma: <strong>"Venda aprovada com sucesso"</strong>, seguido por várias outras que se acumularam enquanto você dormia.</p>
+                
+                <p>Essa vitória de hoje não foi fruto de sorte, capricho do algoritmo ou do destino. Ela foi forjada segundo após segundo na escuridão da sua caverna de treinamento, em cada linha de copy que você insistiu em reescrever com afinco, em cada detalhe de corte que você editou enquanto os outros festejavam sem amanhã.</p>
+                
+                <p>O Código do Protagonista não é uma fórmula temporária; é uma postura de vida intransigente e absoluta. Você escolheu tomar as rédeas do seu destino de uma vez por todas.</p>
+                
+                <p class="text-xl md:text-2xl text-white font-black text-center italic py-4 glow-amber">
+                    "A cortina subiu. As luzes acenderam. Chegou a sua vez de governar o palco principal."
+                </p>
+            </div>
+        </section>
+
+
+        <!-- BÔNUS DENTRO DO EBOOK -->
+        <section id="bonus" class="scroll-mt-24 pt-16 border-t border-zinc-900">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-amber-500 tracking-[0.3em] uppercase text-xs font-bold">CONTEÚDO ADICIONAL DE ELITE</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white">Bônus Exclusivos inclusos</h2>
+                <p class="text-zinc-400 max-w-lg mx-auto text-sm">Ferramentas de aplicação imediata para encurtar seu caminho rumo ao faturamento consistente.</p>
+            </div>
+
+            <div class="space-y-16">
+                
+                <!-- BÔNUS 1: 10 LIÇÕES DE ANIME APLICADAS A NEGÓCIOS -->
+                <div class="p-8 bg-dark-card rounded-xl border border-zinc-800 border-glow">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-amber-500 font-mono text-xs">Bônus 01 //</span> 10 Lições de Animes Aplicadas a Negócios
+                    </h3>
+                    <div class="space-y-4 text-sm text-zinc-400">
+                        <p><strong class="text-white">1. Naruto (O valor do foco irredutível):</strong> A obstinação inabalável de ser respeitado por todos nos ensina a nunca suavizar nossa copy ou nossa proposta comercial diante da descrença alheia.</p>
+                        <p><strong class="text-white">2. Attack on Titan (A dor da liberdade):</strong> O preço da liberdade exige estar disposto a enfrentar o desconhecido e tomar decisões impopulares e duras.</p>
+                        <p><strong class="text-white">3. Death Note (A precisão cirúrgica de planejamento):</strong> Um plano bem estruturado e focado na análise fria do oponente garante a vitória antes mesmo da batalha começar.</p>
+                        <p><strong class="text-white">4. Hunter x Hunter (O valor do processo constante):</strong> O treinamento repetitivo de Gon e Killua prova que a mestria técnica e a consistência vencem o talento bruto.</p>
+                        <p><strong class="text-white">5. Fullmetal Alchemist (A lei da troca equivalente):</strong> Não existe resultado sólido sem o devido sacrifício prévio. Você precisa investir tempo e foco se deseja colher lucros reais.</p>
+                        <p><strong class="text-white">6. Dragon Ball Z (A importância de superar limites constantemente):</strong> O patamar de faturamento atual é apenas o ponto de partida para desbloquear a sua próxima escala de faturamento.</p>
+                        <p><strong class="text-white">7. Demon Slayer (O refino da técnica de base):</strong> O foco na respiração e na repetição perfeita de golpes básicos garante a sobrevivência contra ameaças complexas.</p>
+                        <p><strong class="text-white">8. Vinland Saga (A busca da verdadeira força em silêncio):</strong> A evolução pessoal mais profunda ocorre longe da vaidade da exposição desmedida e inútil.</p>
+                        <p><strong class="text-white">9. One Piece (A força inquebrável de um time de base):</strong> A construção de conexões leais com sua audiência transforma seguidoras casuais em defensores eternos da sua marca digital.</p>
+                        <p><strong class="text-white">10. Bleach (A liberação do verdadeiro potencial interno):</strong> O amadurecimento técnico exige desbloquear sua essência profunda e única para dominar os oponentes do mercado.</p>
+                    </div>
+                </div>
+
+                <!-- BÔNUS 2: 100 FRASES DE REELS ORGANIZADAS POR EMOÇÃO (AMOSTRA COMPLETA) -->
+                <div class="p-8 bg-dark-card rounded-xl border border-zinc-800 border-glow">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-amber-500 font-mono text-xs">Bônus 02 //</span> 100 Frases de Reels Organizadas por Emoção
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-zinc-400">
+                        <div>
+                            <span class="text-amber-500 font-bold block mb-2 uppercase">Ambição & Foco (1-10)</span>
+                            <ul class="space-y-1 list-disc list-inside">
+                                <li>"Eles dormem, você planeja."</li>
+                                <li>"A distância entre o plano e a realidade é a atitude."</li>
+                                <li>"Construa seu castelo em silêncio absoluto."</li>
+                                <li>"Você nasceu para liderar e não para seguir ordens."</li>
+                                <li>"O preço de ser comum é alto demais."</li>
+                                <li>"Ignore as vozes pequenas ao redor do seu progresso."</li>
+                                <li>"Foque na evolução e os resultados cuidarão de si."</li>
+                                <li>"A quietude de quem sabe exatamente para onde vai."</li>
+                                <li>"Não queira atalhos fáceis, queira maestria."</li>
+                                <li>"Seu futuro exige um padrão muito mais elevado."</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="text-amber-500 font-bold block mb-2 uppercase">Superação & Dor (11-20)</span>
+                            <ul class="space-y-1 list-disc list-inside">
+                                <li>"O chão ensina lições que o pódio esconde."</li>
+                                <li>"Suas cicatrizes contam a história da sua vitória."</li>
+                                <li>"A chuva sempre para para quem continua marchando."</li>
+                                <li>"Eles acharam que iam te enterrar, mas você era semente."</li>
+                                <li>"A dor canalizada vira combustível de alta performance."</li>
+                                <li>"O cansaço passa, mas o orgulho de vencer permanece."</li>
+                                <li>"Nunca suavize seu foco diante da tempestade."</li>
+                                <li>"Derrube as barreiras com a força da sua disciplina."</li>
+                                <li>"O deserto molda os guerreiros de elite."</li>
+                                <li>"Eles duvidaram de você, agora assista em silêncio."</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="text-xs text-zinc-500 italic mt-4 text-center">*(Mais 80 frases inclusas no arquivo digital completo disponível no link de compra)*</p>
+                </div>
+
+                <!-- BÔNUS 3: CHECKLIST DE 12 PONTOS ANTES DE POSTAR REEL -->
+                <div class="p-8 bg-dark-card rounded-xl border border-zinc-800 border-glow">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-amber-500 font-mono text-xs">Bônus 03 //</span> Checklist de 12 Pontos Antes de Postar Qualquer Reel
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-zinc-400">
+                        <div class="space-y-2">
+                            <p>1. [ ] <strong class="text-white">O Hook de Entrada:</strong> A frase inicial está legível e surge nos primeiros 0.5 segundos?</p>
+                            <p>2. [ ] <strong class="text-white">Qualidade de Vídeo:</strong> O vídeo está exportado em alta definição (1080p a 60fps)?</p>
+                            <p>3. [ ] <strong class="text-white">Áudio Alinhado:</strong> A batida da música coincide com a troca de cenas no corte?</p>
+                            <p>4. [ ] <strong class="text-white">Legenda Curta:</strong> A descrição está limpa e dividida em parágrafos de fácil leitura?</p>
+                            <p>5. [ ] <strong class="text-white">Chamada para Ação (CTA):</strong> Existe um direcionamento explícito para o direct ou bio?</p>
+                            <p>6. [ ] <strong class="text-white">Enquadramento Central:</strong> O texto principal está dentro da área de exibição padrão do feed (4:5)?</p>
+                        </div>
+                        <div class="space-y-2">
+                            <p>7. [ ] <strong class="text-white">Uso de Hashtags:</strong> Foram adicionadas apenas 3 a 5 hashtags focadas no seu nicho real?</p>
+                            <p>8. [ ] <strong class="text-white">Contraste de Texto:</strong> O texto em tela tem borda escura ou sombra para leitura limpa?</p>
+                            <p>9. [ ] <strong class="text-white">Trilha de Alta:</strong> A música utilizada está em crescimento no direct do Instagram?</p>
+                            <p>10. [ ] <strong class="text-white">SEO de Capa:</strong> A capa do post mostra um título instigante no seu feed?</p>
+                            <p>11. [ ] <strong class="text-white">Ação do Seguidor:</strong> O conteúdo provoca identificação imediata que força compartilhamentos?</p>
+                            <p>12. [ ] <strong class="text-white">Links Ativos:</strong> O link da sua bio está ativo e direcionando para a página de vendas?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BÔNUS 4: TEMPLATE DE SEQUÊNCIA DE WHATSAPP PARA LANÇAMENTO EM 5 DIAS -->
+                <div class="p-8 bg-dark-card rounded-xl border border-zinc-800 border-glow">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="text-amber-500 font-mono text-xs">Bônus 04 //</span> Template de Sequência de WhatsApp para Lançamento em 5 Dias
+                    </h3>
+                    <div class="space-y-4 text-xs text-zinc-400 font-mono bg-black/40 p-5 rounded border border-zinc-800">
+                        <div>
+                            <span class="text-amber-500 font-bold block">Dia 1 — A Quebra de Expectativa:</span>
+                            <p>"Aviso importante para quem está no grupo. Nós fomos ensinados de que a estabilidade do emprego formal era o único caminho seguro. Nos próximos dias vou provar que essa é a maior mentira do mercado moderno. Fique atento."</p>
+                        </div>
+                        <div>
+                            <span class="text-amber-500 font-bold block">Dia 2 — O Diagnóstico da Dor:</span>
+                            <p>"A maioria das pessoas está exausta de trabalhar 8 horas diárias sem perspectiva de crescimento financeiro real. Você também sente que está trocando seu tempo de vida valioso por migalhas?"</p>
+                        </div>
+                        <div>
+                            <span class="text-amber-500 font-bold block">Dia 3 — A Revelação do Método:</span>
+                            <p>"Existe um método silencioso que permite criar um canal de renda digital altamente lucrativo usando o alcance orgânico do Instagram e estética dark. Sem precisar aparecer. Amanhã abriremos as vagas para o grupo VIP."</p>
+                        </div>
+                        <div>
+                            <span class="text-amber-500 font-bold block">Dia 4 — A Oferta de Pré-Lançamento:</span>
+                            <p>"As vagas para adquirir a licença vitalícia do Código do Protagonista serão abertas com desconto exclusivo de pré-lançamento. Serão apenas 50 vagas promocionais."</p>
+                        </div>
+                        <div>
+                            <span class="text-amber-500 font-bold block">Dia 5 — Abertura do Carrinho VIP:</span>
+                            <p>"LINK LIBERADO. Adquira agora o sistema completo por apenas R$ 57 no link abaixo e garanta todos os bônus exclusivos incluídos nesta oferta especial: [LINK_DE_COMPRA]"</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CONVERTING SALES BLOCK (O SITE DE CONVERSÃO GRINGO) -->
+        <section id="comprar" class="scroll-mt-24 bg-gradient-to-br from-zinc-950 to-zinc-900 rounded-3xl p-8 md:p-16 border border-amber-500/40 border-glow text-center space-y-8 relative overflow-hidden">
+            <!-- Decorative Light Flare -->
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-amber-500/10 rounded-full blur-3xl"></div>
+            
+            <span class="text-amber-500 tracking-[0.2em] uppercase text-xs font-bold bg-amber-500/10 px-4 py-2 rounded-full border border-amber-500/20">
+                PROPOSTA DE ACESSO IMEDIATO
+            </span>
+
+            <h2 class="text-3xl md:text-6xl font-black text-white leading-tight">
+                ADQUIRA O SISTEMA <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-yellow-500">COMPLETO COMPILADO</span>
+            </h2>
+
+            <p class="text-zinc-400 max-w-2xl mx-auto text-base md:text-lg">
+                Esqueça os treinamentos de R$ 997 cheios de enrolação conceitual de coach. Adquira agora a licença vitalícia com todos os bônus exclusivos inclusos. O guia de engenharia social, psicologia de alta performance e engenharia de algoritmos de vídeo prontos para aplicação imediata.
+            </p>
+
+            <div class="max-w-md mx-auto bg-black/60 backdrop-blur-sm rounded-2xl p-6 border border-zinc-800 space-y-4">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-zinc-500">Preço Regular:</span>
+                    <span class="line-through text-zinc-600">R$ 197,00</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-white font-bold text-base">Oferta de Lançamento:</span>
+                    <span class="text-3xl font-black text-amber-500 glow-amber">R$ 57,00</span>
+                </div>
+                <p class="text-left text-xs text-zinc-500 mt-2">
+                    * Pagamento único. Sem taxas ocultas. Acesso vitalício imediato via e-mail e download na Kiwify. Garantia incondicional de 7 dias incluída.
+                </p>
+            </div>
+
+            <div class="pt-4 max-w-sm mx-auto">
+                <button onclick="alert('Seu checkout de vendas fictício (Kiwify) carregará aqui em uma aplicação de produção real.')" class="w-full py-5 bg-gradient-to-r from-amber-600 to-yellow-500 text-black font-black uppercase tracking-widest text-base rounded-xl hover:scale-[1.02] hover:shadow-lg hover:shadow-amber-500/20 active:scale-95 transition-all">
+                    Liberar Meu Acesso Imediato
+                </button>
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-6 pt-6 text-xs text-zinc-500">
+                <span class="flex items-center gap-1.5">🛡️ Compra 100% Segura</span>
+                <span class="flex items-center gap-1.5">⚡ Entrega Digital Imediata</span>
+                <span class="flex items-center gap-1.5">🤝 Garantia de 7 Dias</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full bg-black py-12 px-6 border-t border-zinc-900 text-center space-y-4 text-xs text-zinc-600">
+        <p class="font-bold uppercase tracking-widest text-zinc-400">Código do Protagonista © 2026</p>
+        <p class="max-w-md mx-auto leading-relaxed">
+            Este infoproduto e seus materiais bônus são de cunho puramente informativo e operacional. Os resultados variam de acordo com a consistência individual e foco de execução do operador na aplicação do sistema de engajamento orgânico.
+        </p>
+    </footer>
+
+</body>
+</html>
